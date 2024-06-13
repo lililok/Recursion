@@ -44,6 +44,10 @@ export class LinkedList {
     }
 
     at(index) {
+        if (index < 0 || index >= this.size) {
+            return
+        }
+
         let curr = this.head
 
         for (let i = 0; i < index; i++) {
@@ -99,14 +103,6 @@ export class LinkedList {
 
         string += "null";
         return string;
-    }
-
-    insertAt(value, index) {
-        let curr = this.head
-    }
-
-    removeAt(index) {
-        let curr = this.head
     }
 }
 
