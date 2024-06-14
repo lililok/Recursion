@@ -8,23 +8,22 @@ export function knightMoves(start, end) {
         [2, 1], [1, 2], [-1, 2], [-2, 1]
     ];
 
-    let q = []
-    q.push([start])
+    let q = [];
+    q.push([start]);
 
     let visit = new Set();
     visit.add(start.toString());
 
     while (q.length > 0) {
         let path = q.shift();
-        let [x, y] = path[path.length-1];
+        let [x, y] = path[path.length - 1];
 
         if (x === end[0] && y === end[1]) {
             endGame(path);
             return;
         }
 
-        for (let i = 0; i < moves.length; i++) {
-            let [dx, dy] = moves[i];
+        for (let [dx, dy] of moves) {
             let nx = x + dx;
             let ny = y + dy;
 
@@ -34,12 +33,14 @@ export function knightMoves(start, end) {
             }
         }
     }
+    return null;
 }
 
 export function endGame(path) {
-    console.log(`You made it in ${path.length-1} moves! Here's your path:`)
+    console.log(`You made it in ${path.length - 1} moves! Here's your path:`);
 
-    for (let i = 0; i < path.length; i++) {
-        console.log(path[i])
+    for (let [x, y] of path) {
+        console.log([x, y]);
     }
+    return null;
 }
